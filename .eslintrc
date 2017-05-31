@@ -1,0 +1,28 @@
+{
+    extends: [
+        "airbnb/base",
+        "plugin:react/recommended"
+    ],
+    env: {
+        "browser": true,
+        "node": true,
+        "jasmine": true
+    },
+    parser: "babel-eslint",
+    plugins: [
+        "react",
+        "jsx-a11y",
+        "import",
+        "eslint-plugin-react"
+    ],
+    ecmaFeatures: {
+        jsx: true
+    },
+    rules: {
+        "indent": ["error", "tab"],
+        "no-tabs": 0,
+        "comma-dangle": 0,
+        "no-extra-parens": 0,
+        "react/jsx-uses-vars": 1
+    }
+}
