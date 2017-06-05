@@ -1,0 +1,14 @@
+.container {
+    margin: 5rem auto;
+    border: 1px solid black;
+    width: 15rem;
+    height: 10rem;
+}
+
+.hole {
+    width: 5rem;
+    height: 5rem;
+    background: red;
+    display: inline-block;
+    font-size: 1rem;
+}

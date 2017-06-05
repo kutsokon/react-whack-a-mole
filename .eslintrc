@@ -19,7 +19,7 @@
         jsx: true
     },
     rules: {
-        "indent": ["error", "tab"],
+        "indent": 0,
         "no-tabs": 0,
         "comma-dangle": 0,
         "no-extra-parens": 0,

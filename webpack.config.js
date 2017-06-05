@@ -2,7 +2,7 @@ const path = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
-	entry: './src/index.jsx',
+	entry: './src/index.js',
 	output: {
 		filename: 'bundle.js',
 		path: path.join(__dirname, 'dist')
@@ -29,6 +29,13 @@ module.exports = {
 			{
 				test: /\.css?$/,
 				use: ['style-loader', 'css-loader']
+			},
+			{
+				test: /\.(jpe?g|png|gif|svg)$/i,
+				use: [
+					'file-loader?name=assets/[name].[ext]',
+					'image-webpack-loader'
+				]
 			}
 		]
 	},
