@@ -13,7 +13,15 @@
 .hole {
     width: 5rem;
     height: 5rem;
-    background: red;
     display: inline-block;
     font-size: 1rem;
+    border-radius: 50%;
+}
+
+.hole.active {
+	background: green;
+}
+
+.hole.disabled {
+	background: #000000;
 }
