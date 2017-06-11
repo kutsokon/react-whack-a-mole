@@ -6,9 +6,10 @@ class Tile extends Component {
 		this.props.toggleTile(this.props.id);
 	}
 
-	render() {		
+	render() {
+		const moleClass = this.props.mole ? 'active' : 'disabled';
 		return (
-			<div onClick={::this.changeStatus} className={'hole ' + (this.props.mole ? 'active' : 'disabled')}>
+			<div onClick={::this.changeStatus} className={`hole ${moleClass}`}>
 				{this.props.mole}
 			</div>
 		);
@@ -17,7 +18,8 @@ class Tile extends Component {
 
 Tile.propTypes = {
 	mole: PropTypes.bool.isRequired,
-	id: PropTypes.string.isRequired
+	id: PropTypes.string.isRequired,
+	toggleTile: PropTypes.func.isRequired
 };
 
 export default Tile;
