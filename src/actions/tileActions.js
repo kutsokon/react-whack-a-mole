@@ -5,16 +5,12 @@ const toggleTile = id => (dispatch) => {
 		});
 	};
 
-const activeRandomTile = () => (dispatch) => {
-		dispatch({
-			type: 'ACTIVE_RANDOM_TILE'
-		});
-	};
+const activeRandomTile = {
+	type: 'ACTIVE_RANDOM_TILE'
+}
 
-const clearTiles = () => (dispatch) => {
-		dispatch({
-			type: 'CLEAR_TILES'
-		});
-	};
+const clearTiles = {
+	type: 'CLEAR_TILES'
+};
 
 export default { toggleTile, activeRandomTile, clearTiles };

@@ -8,33 +8,23 @@ import StartButton from '../components/StartButton';
 import StopButton from '../components/StopButton';
 import tileActions from '../actions/tileActions';
 import gameActions from '../actions/gameActions';
-import { INITIAL_SPEED } from '../constants/speed';
 import './app.css';
 
 class App extends Component {
 	constructor(props) {
 		super(props);
-		this.startInitialGame = this.startInitialGame.bind(this);
-		this.generateNextStep = this.generateNextStep.bind(this);
-		this.stopInitialGame = this.stopInitialGame.bind(this);
+		this.triggerStartGame = this.triggerStartGame.bind(this);
+		this.triggerStopGame = this.triggerStopGame.bind(this);
 	}
 
-	generateNextStep() {
-		const { activeRandomTile, clearTiles } = this.props.tileActions;
-		this.interval = setInterval(() => {
-			clearTiles();
-			activeRandomTile();
-		}, INITIAL_SPEED);
-	}
-
-	startInitialGame() {
+	triggerStartGame() {
 		const { startGame } = this.props.gameActions;
 		startGame();
-		this.generateNextStep();
 	}
 
-	stopInitialGame() {
-		clearInterval(this.interval);
+	triggerStopGame() {
+		const { stopGame } = this.props.gameActions;
+		stopGame();
 	}
 
 	render() {
@@ -53,8 +43,8 @@ class App extends Component {
 					<div className='game-container'>
 						<div>{tilesElements}</div>
 					</div>
-					<StartButton startGame={this.startInitialGame} />
-					<StopButton stopGame={this.stopInitialGame} />
+					<StartButton startGame={this.triggerStartGame} />
+					<StopButton stopGame={this.triggerStopGame} />
 				</div>
 			</div>
 		);
