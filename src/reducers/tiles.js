@@ -22,6 +22,7 @@ const toggleTile = (state, action) => state.map((tile) => {
 	});
 
 const toggleRandomTile = (state, randomIndex) => state.map((tile, index) => {
+			tile.mole = false;
 			if (index === randomIndex) {
 				tile.mole = true;
 			}
@@ -39,11 +40,6 @@ const activeRandomTile = (state) => {
 	return toggleRandomTile(state, randomIndex);
 };
 
-const clearTiles = state => state.map((tile) => {
-			tile.mole = false;
-			return tile;
-		});
-
 const tiles = (state = tilesData, action) => {
 	switch (action.type) {
 		case 'ADD_TILE':
@@ -52,8 +48,6 @@ const tiles = (state = tilesData, action) => {
 			return toggleTile(state, action);
 		case 'ACTIVE_RANDOM_TILE':
 			return activeRandomTile(state);
-		case 'CLEAR_TILES':
-			return clearTiles(state);
 		default:
 			return state;
 	}

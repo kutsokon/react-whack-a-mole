@@ -13,7 +13,6 @@ const startGame = () => (dispatch, getState) => {
 	dispatch(startGameAction);
 	
 	interval = setInterval(() => {
-		dispatch(tileActions.clearTiles);
 		dispatch(tileActions.activeRandomTile);
 	}, INITIAL_SPEED);
 };
