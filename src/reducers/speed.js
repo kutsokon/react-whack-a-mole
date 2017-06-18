@@ -1,4 +1,4 @@
-import { INITIAL_SPEED } from '../constants/speed';
+import { INITIAL_SPEED } from '../constants/index';
 
 const speed = (state = INITIAL_SPEED, action) => {
 	if (action.type === 'INCREASE') {

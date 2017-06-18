@@ -4,10 +4,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Greet from '../components/Greet';
 import Tile from '../components/Tile';
-import StartButton from '../components/StartButton';
-import StopButton from '../components/StopButton';
-import tileActions from '../actions/tileActions';
-import gameActions from '../actions/gameActions';
+import ControlButton from '../components/ControlButton';
+import tilesActions from '../actions/tiles';
+import gameActions from '../actions/game';
 import './app.css';
 
 class App extends Component {
@@ -29,7 +28,7 @@ class App extends Component {
 
 	render() {
 		const { tiles } = this.props;
-		const { toggleTile } = this.props.tileActions;
+		const { toggleTile } = this.props.tilesActions;
 		const tilesElements = tiles.map(item => <Tile
 			toggleTile={toggleTile}
 			mole={item.mole}
@@ -43,8 +42,8 @@ class App extends Component {
 					<div className='game-container'>
 						<div>{tilesElements}</div>
 					</div>
-					<StartButton startGame={this.triggerStartGame} />
-					<StopButton stopGame={this.triggerStopGame} />
+					<ControlButton controlAction={this.triggerStartGame} actionName="Start"/>
+					<ControlButton controlAction={this.triggerStopGame} actionName="Stop"/>
 				</div>
 			</div>
 		);
@@ -54,7 +53,7 @@ class App extends Component {
 App.propTypes = {
 	tiles: PropTypes.array.isRequired,
 	isGameInProgress: PropTypes.bool.isRequired,
-	tileActions: PropTypes.object.isRequired,
+	tilesActions: PropTypes.object.isRequired,
 	gameActions: PropTypes.object.isRequired
 };
 
@@ -64,7 +63,7 @@ const mapStateToProps = state => ({
 	});
 
 const mapDispatchToProps = dispatch => ({
-		tileActions: bindActionCreators(tileActions, dispatch),
+		tilesActions: bindActionCreators(tilesActions, dispatch),
 		gameActions: bindActionCreators(gameActions, dispatch)
 });
 

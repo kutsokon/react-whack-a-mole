@@ -1,6 +1,5 @@
-import tileActions from '../actions/tileActions';
-import { INITIAL_SPEED } from '../constants/speed';
-import { TILES_QUANTITY } from '../constants/general';
+import tilesActions from '../actions/tiles';
+import { INITIAL_SPEED, TILES_QUANTITY } from '../constants/index';
 
 const generateRandomTileIndex = quantity => Math.floor(Math.random() * quantity);
 
@@ -17,7 +16,7 @@ const startGame = () => (dispatch) => {
 
 	interval = setInterval(() => {
 		dispatch({
-			...tileActions.activeRandomTile,
+			...tilesActions.activeRandomTile,
 			randomNumber: generateRandomTileIndex(TILES_QUANTITY)
 		});
 	}, INITIAL_SPEED);
@@ -26,6 +25,7 @@ const startGame = () => (dispatch) => {
 const stopGame = () => (dispatch) => {
 	clearInterval(interval);
 	dispatch(stopGameAction);
+	dispatch(tilesActions.clearTiles);
 };
 
 

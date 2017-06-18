@@ -1,5 +1,5 @@
 import uuid from 'uuid/v4';
-import { TILES_QUANTITY } from '../constants/general';
+import { TILES_QUANTITY } from '../constants/index';
 
 const blankTilesData = Array(TILES_QUANTITY);
 const tilesData = [];
@@ -13,6 +13,11 @@ for (let i = 0; i < blankTilesData.length; i += 1) {
 }
 
 const addTile = (state, action) => [...state, action.payload];
+
+const clearTiles = state => state.map((tile) => {
+	tile.mole = false;
+	return tile;
+});
 
 const toggleTile = (state, action) => state.map((tile) => {
 		if (tile.id === action.id) {
@@ -35,6 +40,8 @@ const tiles = (state = tilesData, action) => {
 	switch (action.type) {
 		case 'ADD_TILE':
 			return addTile(state, action);
+		case 'CLEAR_TILES':
+			return clearTiles(state, action);
 		case 'TOGGLE_TILE':
 			return toggleTile(state, action);
 		case 'ACTIVE_RANDOM_TILE':
