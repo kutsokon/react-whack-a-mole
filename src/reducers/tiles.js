@@ -20,7 +20,7 @@ const clearTiles = state => state.map((tile) => {
 });
 
 const toggleTile = (state, action) => state.map((tile) => {
-		if (tile.id === action.id) {
+		if (tile.id === action.id && tile.mole) {
 			tile.mole = !tile.mole;
 		}
 		return tile;

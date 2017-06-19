@@ -1,4 +1,4 @@
-import tilesActions from '../actions/tiles';
+import tilesActions from './tiles';
 import { INITIAL_SPEED, TILES_QUANTITY } from '../constants/index';
 
 const generateRandomTileIndex = quantity => Math.floor(Math.random() * quantity);

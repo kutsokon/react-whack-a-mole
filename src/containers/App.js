@@ -27,7 +27,7 @@ class App extends Component {
 	}
 
 	render() {
-		const { tiles } = this.props;
+		const { tiles, scores } = this.props;
 		const { toggleTile } = this.props.tilesActions;
 		const tilesElements = tiles.map(item => <Tile
 			toggleTile={toggleTile}
@@ -44,6 +44,8 @@ class App extends Component {
 					</div>
 					<ControlButton controlAction={this.triggerStartGame} actionName="Start"/>
 					<ControlButton controlAction={this.triggerStopGame} actionName="Stop"/>
+					<div>Player score: {scores.player}</div>
+					<div>Mole score: {scores.mole}</div>
 				</div>
 			</div>
 		);
@@ -54,12 +56,14 @@ App.propTypes = {
 	tiles: PropTypes.array.isRequired,
 	isGameInProgress: PropTypes.bool.isRequired,
 	tilesActions: PropTypes.object.isRequired,
-	gameActions: PropTypes.object.isRequired
+	gameActions: PropTypes.object.isRequired,
+	scores: PropTypes.object.isRequired
 };
 
 const mapStateToProps = state => ({
 		tiles: state.tiles,
-		isGameInProgress: state.game.isGameInProgress
+		isGameInProgress: state.game.isGameInProgress,
+		scores: state.scores
 	});
 
 const mapDispatchToProps = dispatch => ({
